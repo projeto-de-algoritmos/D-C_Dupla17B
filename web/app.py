@@ -13,18 +13,14 @@ bootstrap = Bootstrap(app)
 
 @app.route('/')
 def index():
-  
-    return render_template('index.html')
+    genres = ["Action","Comedy","Drama","Fantasy","Horror","Mystery","Romance","Thriller","Western"]
+    return render_template('index.html', genres=genres)
 
-
-# @app.route('/recommendations', methods=['GET'])
-# def recommendations():
-    
-#     song = make = request.args.get('song')
-#     results = recommend(song)
-#     if results == False:
-#         return "Musica não encontrada, por favor tente outra"
-#     return render_template('playlist.html',  recommendations=recommend(song))
+@app.route('/match', methods=['POST'])
+def match():
+    user_order = request.json['user_order']
+    return ' '.join(user_order)
+    #return render_template('match.html', user_order=user_order)
 
 
 if __name__ == '__main__':
