@@ -29,7 +29,7 @@ https://paa-moviepartner.herokuapp.com/
 Mas, se preferir ver o projeto funcionando localmente, para instalar basta seguir uma das alternativas a seguir:
 
 * Docker: Se você tiver o docker instalado na sua máquina basta executar um ```docker-compose up``` e acessar o seu [localhost na porta 5000](http://localhost:5000/).
-* Instalação manual: Para instalar tudo manualmente, basta executar um ```pip install -r requirements.txt``` e em seguida um python ```web/app.p```, ambos na raiz do repositório. Feito isso a aplicação estará funcionando no localhost na porta indicada no terminal.
+* Instalação manual: Para instalar tudo manualmente, basta executar um ```pip install -r requirements.txt``` e em seguida um  ```python web/app.py```, ambos na raiz do repositório. Feito isso a aplicação estará funcionando no localhost na porta indicada no terminal.
 
 ## Uso 
 Para usar o projeto basta ordenar a lista de gêneros de filme em acordo com sua preferência e então clicar no botão "Find me a Partner". Feito isso você verá as cinco pessoas mais compatíveis com os seus gostos e poderá clicar em alguma delas para entrar em contato caso a pessoa tenha disponibilizado tal informação.
