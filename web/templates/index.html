@@ -8,13 +8,14 @@
     <title>PAA - Song Recommendation</title>
     {{ bootstrap.load_css() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/basscss.css') }}">
-    <link rel="stylesheet" href="/static/css/style.css?v=333124">
+    <link rel="stylesheet" href="/static/css/style.css?v=334143124">
+    <link rel="stylesheet" href="/static/css/scss.css?v=333124">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script  src="{{ url_for('static', filename='js/html5sortable.js') }}"></script>
-    <script src="/static/js/script.js?v={{ 2324444444444 }}"></script>
+    <script src="/static/js/script.js?v={{ 3322 }}"></script>
 
     <style>
         body{
@@ -58,13 +59,23 @@
                 <ul class="ml4 js-sortable sortable list list-reset">
                 {% for genre in genres %}
   
-                <li id="1" class="p1 mb1 navy litem" style="position: relative; z-index: 10">{{genre}}</li>
+                <li id={{genre}} class="p1 mb1 navy litem" style="position: relative; z-index: 10">{{genre}}</li>
 
                 {% endfor %}
                 </ul>
                 <button id="button" class="rounded ml4 js-serialize-button button navy ">Find me a partner !</button> 
             </div>
-
+            <dl>
+                <dt>
+                  Browser market share June 2015
+                </dt>
+                <dd class="percentage percentage-11"><span class="text">IE 11: 11.33%</span></dd>
+                <dd class="percentage percentage-49"><span class="text">Chrome: 49.77%</span></dd>
+                <dd class="percentage percentage-16"><span class="text">Firefox: 16.09%</span></dd>
+                <dd class="percentage percentage-5"><span class="text">Safari: 5.41%</span></dd>
+                <dd class="percentage percentage-2"><span class="text">Opera: 1.62%</span></dd>
+                <dd class="percentage percentage-2"><span class="text">Android 4.4: 2%</span></dd>
+            </dl>
 
 
           </div>

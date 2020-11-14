@@ -3,11 +3,18 @@ import requests
 import itertools
 from flask_bootstrap import Bootstrap
 import os
-# from get_recommendations import recommend
+from countInversions import countInversions
 from flask import request
+from flask_pymongo import PyMongo
+from flask import jsonify
+import json
+from bson import json_util
+
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
+app.config["MONGO_URI"] = "mongodb://paa:21milEmmEa57yKDx@paa-shard-00-00.se53e.mongodb.net:27017,paa-shard-00-01.se53e.mongodb.net:27017,paa-shard-00-02.se53e.mongodb.net:27017/movie_recommendation?ssl=true&replicaSet=atlas-10i7up-shard-0&authSource=admin&retryWrites=true&w=majority"
+mongo = PyMongo(app)
 
 @app.after_request
 def add_header(r):
@@ -21,14 +28,49 @@ def add_header(r):
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
 
+genres = ["Action","Comedy","Drama","Fantasy","Horror","Mystery","Romance","Thriller","Western"]
+
 @app.route('/')
 def index():
-    genres = ["Action","Comedy","Drama","Fantasy","Horror","Mystery","Romance","Thriller","Western"]
     return render_template('index.html', genres=genres)
+
+@app.route('/record_user_preference', methods=['POST'])
+def record_user_preference():
+    user_order = list(request.json['user_order'])
+    if not user_order:
+        user_order = genres  
+    user_name = request.json['user_name']  
+    user_preference = mongo.db.users.insert_one({'name':user_name, "preference":user_order})
+    return jsonify(success=True), 200 
+
+
+@app.route('/get_best_matches', methods=['POST'])
+def get_best_matches():
+    user_order = list(request.json['user_order'])
+    if not user_order:
+        user_order = genres  
+    user_name = request.json['user_name']  
+
+    users = mongo.db.users.find({},{ "_id": 0})
+    
+    for user in users:
+        if user["name"] != user_name: 
+            current_choice = user["preference"]
+            ordered = [user_order.index(choice)+1 for choice in current_choice]
+            score = countInversions(ordered)[1]         
+        else:
+            score = 0
+
+
+    # json_docs = [json.dumps(doc, default=json_util.default) for doc in users]
+    return str(score)
+
 
 @app.route('/match', methods=['GET','POST'])
 def match():
-    user_order = request.json['user_order']
+    user_order = list(request.json['user_order'])
+    if not user_order:
+        user_order = genres
     return render_template('match.html', user_order=user_order)
 
 

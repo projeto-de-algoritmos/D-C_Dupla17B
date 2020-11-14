@@ -4,27 +4,26 @@ $(function() {
 
     sortable('.js-sortable', {
             forcePlaceholderSize: true,
-            placeholderClass: 'mb1 bg-navy',
+            placeholderClass: 'mb1 dark-bg',
             hoverClass: 'bg-maroon yellow'
         })
 
 
         
     sortable('.sortable')[0].addEventListener('sortupdate', function(e) {
+            user_order = []
             e.detail.origin.items.forEach(element => {user_order.push(element.id)});
     });
 
 
     $("#button").click(function(){
-        console.log("bb");
 
         $.ajax({
             url: "/match",
             type: "POST",
-            // dataType: 'json',
             contentType: 'application/json',
             data: JSON.stringify({
-                "user_order":"Test Name"
+                "user_order":user_order
               }),
             success: function(response) {
                 $('#result').append(response)
