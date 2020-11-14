@@ -14,9 +14,9 @@ Um passatempo muito comum para todas as idades é o Cinema. Mas como muitas cois
 Esse projeto tem como intuito te ajudar a achar uma pessoa que tenha gostos similares aos seus quando o assunto é conteúdo cinematográfico, para que então possam assistir filmes em conjunto. Para isso, basta ordenar os gêneros de filme na sua ordem de preferência e pronto, o algoritmo irá te sugerir os melhores parceiros. 
 
 ## Screenshots
-![screen1](screenshots/screenshot1.png)
-![screen2](screenshots/screenshot2.png)
-![screen3](screenshots/screenshot3.png)
+![screen1](screenshots/screenshot_home.png)
+![screen2](screenshots/screenshot_register.png)
+![screen3](screenshots/screenshot_result.png)
 
 ## Instalação 
 **Linguagem**: Python<br>
