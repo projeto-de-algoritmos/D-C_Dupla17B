@@ -1,0 +1,11 @@
+<dl>
+    <dt>
+        These are your best partners to watch a movie today !
+    </dt>
+    {% for result in results %}
+
+        <dd class="percentage percentage-{{ result['score'] }}"><span class="text">{{ result['name'] }}</span></dd>
+
+    {% endfor %}
+
+    </dl>

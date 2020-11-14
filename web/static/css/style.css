@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+    font-family: 'Poppins';
+}
+.litem{
+background-color: #e5b622;
+border-radius: 12px;
+}
+.navbar {
+    background-color: #18181a;
+}
+.button{
+    background-color:#bec2c1;
+}
+#content ul li{
+    font-size: 1.1rem;
+}
+#content {
+    font-size: 1.1rem;
+}
+.dark-bg{
+    background-color: #18181a;
+}
