@@ -12,21 +12,18 @@ bootstrap = Bootstrap(app)
 app.config["MONGO_URI"] = "mongodb://paa:21milEmmEa57yKDx@paa-shard-00-00.se53e.mongodb.net:27017,paa-shard-00-01.se53e.mongodb.net:27017,paa-shard-00-02.se53e.mongodb.net:27017/movie_recommendation?ssl=true&replicaSet=atlas-10i7up-shard-0&authSource=admin&retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
-
-genres = [
-    "Action",
-    "Comedy",
-    "Drama",
-    "Fantasy",
-    "Horror",
-    "Mystery",
-    "Romance",
-    "Thriller",
-    "Western"]
-
-
 @app.route('/')
 def index():
+    genres = [
+        "Action",
+        "Comedy",
+        "Drama",
+        "Fantasy",
+        "Horror",
+        "Mystery",
+        "Romance",
+        "Thriller",
+        "Western"]
     return render_template('index.html', genres=genres)
 
 
@@ -36,8 +33,6 @@ def record_user_preference():
     Inserts a user and his/her respective preferences of movie genres
     '''
     user_order = list(request.json['user_order'])
-    if not user_order:
-        user_order = genres
     user_name = request.json['user_name']
     user_contact = request.json['user_contact']
     mongo.db.users.insert_one(
@@ -51,8 +46,6 @@ def get_best_matches():
 
     '''
     user_order = list(request.json['user_order'])
-    if not user_order:
-        user_order = genres
     user_name = request.json['user_name']
 
     users = mongo.db.users.find({}, {"_id": 0})
