@@ -1,22 +1,22 @@
 def countInversions(array):
     '''
-    Counts the number of inversions in a given array 
+    Counts the number of inversions in a given array
     Returns the sorted array and the number of inversions
     '''
-    #base case
+    # base case
     if len(array) == 1:
         return array, 0
 
     else:
-        #split the list into two halves
-        left = array[:len(array)//2]
-        right = array[len(array)//2:]
+        # split the list into two halves
+        left = array[:len(array) // 2]
+        right = array[len(array) // 2:]
 
-        #recursively sort and count both havles
+        # recursively sort and count both havles
         left, left_inversions = countInversions(left)
         right, right_inversions = countInversions(right)
 
-        #sum inversions
+        # sum inversions
         sorted_array = []
         i = 0
         j = 0
@@ -30,7 +30,7 @@ def countInversions(array):
         else:
             sorted_array.append(right[j])
             j += 1
-            inversions += (len(left)-i)
+            inversions += (len(left) - i)
     sorted_array += left[i:]
     sorted_array += right[j:]
 
