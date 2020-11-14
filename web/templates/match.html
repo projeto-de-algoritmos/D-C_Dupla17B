@@ -1,9 +1,11 @@
-{% for _ in range(1) %}
-<div class="card ml-1" style="max-width: 150px;max-height: 200px;">
-    <img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/6713/girl-avatar-clipart-lg.png" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">{{ user_order }}</h5>
-        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-    </div>
-</div>
-{% endfor %}
+<dl>
+    <dt>
+        These are your best partners to watch a movie today !
+    </dt>
+    {% for result in results %}
+
+        <dd class="percentage percentage-{{ result['score'] }}"><span class="text">{{ result['name'] }}</span></dd>
+
+    {% endfor %}
+
+    </dl>

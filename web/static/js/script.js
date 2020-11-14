@@ -16,13 +16,31 @@ $(function() {
     });
 
 
-    $("#button").click(function(){
+    $("#register").click(function(){
+
+        var user_name = $("#user-name").val();
 
         $.ajax({
-            url: "/match",
+            url: "/record_user_preference",
             type: "POST",
             contentType: 'application/json',
             data: JSON.stringify({
+                "user_name":user_name,
+                "user_order":user_order
+              })
+        });
+
+
+    });
+
+    $("#find-partner").click(function(){
+        var user_name = $("#user-name").val();
+        $.ajax({
+            url: "/get_best_matches",
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "user_name":user_name,
                 "user_order":user_order
               }),
             success: function(response) {
@@ -32,7 +50,6 @@ $(function() {
 
 
     });
-
 
 
 });

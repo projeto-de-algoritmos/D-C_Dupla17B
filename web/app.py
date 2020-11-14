@@ -53,17 +53,20 @@ def get_best_matches():
 
     users = mongo.db.users.find({},{ "_id": 0})
     
+    results = []
+    n =  len(user_order)
+    max_inversions =  n*(n-1)/2
+
     for user in users:
-        if user["name"] != user_name: 
+        current_user_name = user["name"]
+        if current_user_name != user_name: 
             current_choice = user["preference"]
             ordered = [user_order.index(choice)+1 for choice in current_choice]
-            score = countInversions(ordered)[1]         
-        else:
-            score = 0
+            inversions = countInversions(ordered)[1]
+            score = int(100-((inversions/max_inversions)*100))
+            results.append({"name":current_user_name,"score":score})        
 
-
-    # json_docs = [json.dumps(doc, default=json_util.default) for doc in users]
-    return str(score)
+    return render_template('match.html', results=results)
 
 
 @app.route('/match', methods=['GET','POST'])
