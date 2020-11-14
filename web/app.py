@@ -61,9 +61,11 @@ def get_best_matches():
     # iterating through every recorded user
     for user in all_users:
 
+        user_name = user["name"]
+
         # skipping the user making the request, if he/she has previously been
         # registered
-        if user["name"] == base_user_name:
+        if  user_name == base_user_name:
             continue
 
         user_contact = user["contact"]
@@ -83,10 +85,10 @@ def get_best_matches():
         # Calculating the score of the user in the current iteration
         # That score represents how compatible the said user is with the user
         # making the request
-        score = int(100 - ((inversions / max_inversions) * 100))
+        score = int(100 - ((number_of_inversions / max_inversions) * 100))
 
-        results.append({"name": current_user_name,
-                        "score": score, "contact": current_user_contact})
+        results.append({"name": user_name,
+                        "score": score, "contact": user_contact})
 
     # Getting the five users with the biggest score
     results = sorted(results, key=itemgetter('score'), reverse=True)[:5]

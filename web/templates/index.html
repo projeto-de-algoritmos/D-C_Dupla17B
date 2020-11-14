@@ -9,21 +9,21 @@
     {{ bootstrap.load_css() }}
     <link rel="stylesheet"
         href="{{ url_for('static', filename='css/basscss.css') }}">
-    <link rel="stylesheet" href="/static/css/style.css?v=99922">
-    <link rel="stylesheet" href="/static/css/compiled_scss.css?v=999">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/compiled_scss.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script src="{{ url_for('static', filename='js/html5sortable.js') }}">
     </script>
-    <script src="/static/js/script.js?v=9992223221"></script>
+    <script src="/static/js/script.js"></script>
 
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a class="navbar-brand" href="#">PAA - Movie Recommendation</a>
+        <a class="navbar-brand" href="#">PAA - Movie Partner Recommendation</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
 
     <section id="content" class="h-100">
 
-        <div id="result" class="d-flex align-items-center justify-content-center h-100">
+        <div  class="d-flex align-items-center justify-content-center h-100">
 
 
             <div id="genres" class="col-3">
@@ -74,8 +74,10 @@
 
 
             </div>
+            <div id="result">
 
 
+            </div>
 
         </div>
     </section>

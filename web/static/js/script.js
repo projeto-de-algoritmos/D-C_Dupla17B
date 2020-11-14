@@ -58,6 +58,11 @@ $(function () {
 
     $("#find-partner").click(function () {
         var user_name = $("#user-name").val();
+
+        if (user_preference.length == 0) {
+            sortable('.js-sortable', 'serialize')[0].items.forEach(element => { user_preference.push(element.node.id) });
+        }
+
         $.ajax({
             url: "/get_best_matches",
             type: "POST",
@@ -67,7 +72,7 @@ $(function () {
                 "user_preference": user_preference
             }),
             success: function (response) {
-                $('#result').append(response)
+                $('#result').html(response)
             }
         });
 
