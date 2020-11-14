@@ -57,6 +57,9 @@ $(function () {
     });
 
     $("#find-partner").click(function () {
+
+        $('#tutorial-text').fadeOut(300, function(){ $(this).remove();});
+
         var user_name = $("#user-name").val();
 
         if (user_preference.length == 0) {
@@ -72,7 +75,8 @@ $(function () {
                 "user_preference": user_preference
             }),
             success: function (response) {
-                $('#result').html(response)
+                $("#result").hide().html(response).fadeIn();
+
             }
         });
 

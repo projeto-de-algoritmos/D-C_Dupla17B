@@ -9,7 +9,7 @@
     {{ bootstrap.load_css() }}
     <link rel="stylesheet"
         href="{{ url_for('static', filename='css/basscss.css') }}">
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css?v=3">
     <link rel="stylesheet" href="/static/css/compiled_scss.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script src="{{ url_for('static', filename='js/html5sortable.js') }}">
     </script>
-    <script src="/static/js/script.js"></script>
+    <script src="/static/js/script.js?v=6"></script>
 
 </head>
 
@@ -47,7 +47,9 @@
     <section id="content" class="h-100">
 
         <div  class="d-flex align-items-center justify-content-center h-100">
-
+            <div id="tutorial-text" class="col-3">
+                    Sort the list by dragging the genres accordingly to your preference. The more you like it, the higher it should be.
+            </div>
 
             <div id="genres" class="col-3">
 
