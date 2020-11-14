@@ -19,6 +19,8 @@ $(function() {
     $("#register").click(function(){
 
         var user_name = $("#user-name").val();
+        var user_contact = $("#user-contact").val();
+
 
         $.ajax({
             url: "/record_user_preference",
@@ -26,8 +28,16 @@ $(function() {
             contentType: 'application/json',
             data: JSON.stringify({
                 "user_name":user_name,
-                "user_order":user_order
-              })
+                "user_order":user_order,
+                "user_contact": user_contact
+              }),
+            success: function(){
+                var success = '<div id="success" class="ml4 alert alert-success"><p>Preferences recorded!</p></div>'
+                $(success).hide().prependTo('#genres').fadeIn();
+                setTimeout(function(){
+                    $('#success').fadeOut(); 
+                 },2600);
+            }
         });
 
 

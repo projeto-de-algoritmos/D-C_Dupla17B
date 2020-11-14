@@ -9,13 +9,13 @@
     {{ bootstrap.load_css() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/basscss.css') }}">
     <link rel="stylesheet" href="/static/css/style.css?v=334411443124">
-    <link rel="stylesheet" href="/static/css/scss.css?v=333124">
+    <link rel="stylesheet" href="/static/css/compiled_scss.css?v=333124">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script  src="{{ url_for('static', filename='js/html5sortable.js') }}"></script>
-    <script src="/static/js/script.js?v={{ 3311424222 }}"></script>
+    <script src="/static/js/script.js?v={{ 221242241 }}"></script>
 
     <style>
         body{
@@ -52,10 +52,12 @@
 
 
     <section id="content" class="h-100">
+        
           <div  id="result" class="d-flex align-items-center justify-content-center h-100">
 
 
-            <div  class="col-3">
+            <div id="genres" class="col-3">
+
                 <ul class="ml4 js-sortable sortable list list-reset">
                 {% for genre in genres %}
   
@@ -63,7 +65,10 @@
 
                 {% endfor %}
                 </ul>
-                <div class="ml4 input-group mb-3">
+                <input placeholder="Contact Link" type="text"  style="max-width: fit-content;" id="user-contact" class="form-control ml4 mb-1 ">
+
+                <div class="ml4 input-group mb-1">
+                    
                     <div class="input-group-prepend">
                       <button id="register" class="rounded  button navy" type="button">Register </button>
                     </div>
