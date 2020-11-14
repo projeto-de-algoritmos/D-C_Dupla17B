@@ -1,6 +1,6 @@
 $(function () {
 
-    var user_order = [];
+    var user_preference = [];
 
     sortable('.js-sortable', {
         forcePlaceholderSize: true,
@@ -11,8 +11,8 @@ $(function () {
 
 
     sortable('.js-sortable')[0].addEventListener('sortupdate', function (e) {
-        user_order = []
-        e.detail.origin.items.forEach(element => { user_order.push(element.id) });
+        user_preference = []
+        e.detail.origin.items.forEach(element => { user_preference.push(element.id) });
     });
 
 
@@ -30,8 +30,8 @@ $(function () {
             return
         }
 
-        if (user_order.length == 0) {
-            sortable('.js-sortable', 'serialize')[0].items.forEach(element => { user_order.push(element.node.id) });
+        if (user_preference.length == 0) {
+            sortable('.js-sortable', 'serialize')[0].items.forEach(element => { user_preference.push(element.node.id) });
         }
 
 
@@ -41,7 +41,7 @@ $(function () {
             contentType: 'application/json',
             data: JSON.stringify({
                 "user_name": user_name,
-                "user_order": user_order,
+                "user_preference": user_preference,
                 "user_contact": user_contact
             }),
             success: function () {
@@ -64,7 +64,7 @@ $(function () {
             contentType: 'application/json',
             data: JSON.stringify({
                 "user_name": user_name,
-                "user_order": user_order
+                "user_preference": user_preference
             }),
             success: function (response) {
                 $('#result').append(response)
